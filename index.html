@@ -1,515 +1,229 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cookie Launcher | Hafif ve Açık Kaynak Minecraft Başlatıcı</title>
-  <meta name="description" content="Cookie Launcher, Tauri (Rust) kabuk ve hafif Python çekirdekle çalışan, Modrinth destekli, izole profilli, açık kaynak (GPL-3.0) Minecraft başlatıcısı. Ücretsiz, reklamsız, telemetrisiz.">
-  <link rel="stylesheet" href="assets/fonts/fonts.css">
-  <link rel="stylesheet" href="assets/site.css">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="canonical" href="index.html">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta name="color-scheme" content="dark">
-  <meta name="theme-color" content="#150b1a">
-  <meta name="robots" content="index,follow">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cookie Launcher, 900+ Minecraft Java sürümü</title>
+  <meta name="description" content="Cookie Launcher, 900’den fazla resmi Minecraft Java sürümü, Modrinth modları, ayrı profiller ve şifreli arkadaş davetleri sunan ücretsiz, açık kaynaklı bir başlatıcı.">
+  <meta property="og:title" content="Cookie Launcher, bütün Minecraft Java sürümleri">
+  <meta property="og:description" content="900+ resmi sürüm, Modrinth modları, ayrı profiller ve arkadaşlarla ücretsiz bir Minecraft Java başlatıcısı.">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Cookie Launcher">
-  <meta property="og:locale" content="tr_TR">
-  <meta property="og:title" content="Cookie Launcher | Hafif ve Açık Kaynak Minecraft Başlatıcı">
-  <meta property="og:description" content="Tauri (Rust) kabuk ve hafif Python çekirdekten oluşan, Modrinth destekli, izole profilli, GPL-3.0 lisanslı açık kaynak Minecraft başlatıcı.">
-  <meta property="og:url" content="https://cookie-launcher.github.io/">
+  <meta name="theme-color" content="#ff8126">
+  <link rel="icon" href="assets/cookie-logo.png" type="image/png">
+  <link rel="stylesheet" href="fonts.css">
+  <link rel="stylesheet" href="styles.css?v=10">
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
-  <a href="index.html#main" class="skip">İçeriğe geç</a>
-  <noscript>
-    <div class="container" style="padding-block:var(--space-md)">
-      <p class="label">JavaScript kapalı. Sitede çerez, analitik veya izleme kodu çalışmaz; sayfanın tamamı JavaScript olmadan okunabilir. Yalnızca platform seçimi, SSS aç/kapa ve pano kopyalama devre dışı kalır. <a href="cerez-politikasi.html">Çerez Politikası</a></p>
-    </div>
-  </noscript>
+  <a class="skip" href="#main">İçeriğe geç</a>
 
-  <header class="nav">
-    <div class="container nav__bar">
-      <a class="wordmark" href="index.html#" aria-label="Cookie Launcher, ana sayfa">
-        <img src="assets/favicon.svg" width="34" height="34" alt="">
-        <span>Cookie Launcher</span>
-      </a>
-      <nav class="nav__links" aria-label="Ana menü">
-        <a href="index.html#preview">Arayüz</a>
-        <a href="index.html#features">Özellikler</a>
-        <a href="index.html#downloads">İndir</a>
-        <a href="index.html#faq">SSS</a>
-      </nav>
-      <div class="nav__actions">
-        <a class="btn btn--quiet btn--sm" href="https://github.com/cookie-launcher/cookie-launcher" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a class="btn btn--sm" href="index.html#downloads">İndir</a>
-      </div>
-    </div>
+  <header class="topbar" id="top">
+    <a class="brand" href="#top" aria-label="Cookie Launcher ana sayfa">
+      <img class="brand__mark" src="assets/cookie-logo.png" width="32" height="32" alt="">
+      <span class="brand__name" lang="en">Cookie Launcher</span>
+    </a>
+    <a class="button button--small" href="https://github.com/cookie-launcher/cookie-launcher/releases/latest" data-download>İndir</a>
   </header>
 
   <main id="main" tabindex="-1">
-    <section class="hero">
-      <div class="container hero__grid">
-        <div class="hero__text">
-          <h1 class="hero__title">Yormayan başlatıcı.</h1>
-          <p class="lead">Hızlı ve sade bir Minecraft başlatıcısı: Tauri (Rust) kabuğu, Python çekirdeği, Modrinth modları.</p>
-          <dl class="spec">
-            <div><dt>Tauri + Rust</dt><dd>Hafif masaüstü kabuğu</dd></div>
-            <div><dt>Python çekirdeği</dt><dd>İndirme ve başlatma</dd></div>
-            <div><dt>GPL-3.0</dt><dd>Kaynak açık</dd></div>
-            <div><dt>Sıfır reklam</dt><dd>Telemetri yok</dd></div>
-          </dl>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__field hero__field--top" aria-hidden="true"></div>
+      <div class="hero__field hero__field--bottom" aria-hidden="true"></div>
+
+      <div class="waterline">
+        <h1 class="waterline__title" id="hero-title">
+          <span class="waterline__line"><span>Oyna.</span></span>
+          <span class="waterline__line waterline__line--last"><span>Modla.</span></span>
+        </h1>
+      </div>
+
+      <p class="hero__support">Cookie Launcher, 900+ resmi Minecraft Java sürümü, Modrinth modları ve arkadaşlar için ücretsiz bir başlatıcı.</p>
+    </section>
+
+    <section class="features" id="ozellikler" aria-labelledby="features-title">
+      <div class="shell">
+        <div class="features__intro">
+          <h2 id="features-title">İçinde ne var.</h2>
+          <p>Oyunun etrafındaki her şey, tek pencerede.</p>
         </div>
 
-        <div class="hero__menu">
-          <div class="menu" role="group" aria-label="İndirme platformu">
-            <ul class="menu__list">
-              <li><a class="menu__row" href="#downloads" data-os="windows"><span class="menu__name">Windows</span><span class="menu__meta">Yükleyici .exe</span></a></li>
-              <li><a class="menu__row" href="#downloads" data-os="linux"><span class="menu__name">Linux</span><span class="menu__meta">AppImage, .deb, .rpm</span></a></li>
-              <li><a class="menu__row" href="#downloads" data-os="macos"><span class="menu__name">macOS</span><span class="menu__meta">DMG, arm64 ve x64</span></a></li>
-            </ul>
-            <a class="btn btn--wide" id="hero-cta-btn" href="#downloads"><span id="hero-cta-label">Windows için indir (.exe)</span></a>
-            <a class="btn btn--quiet btn--wide" href="https://github.com/cookie-launcher/cookie-launcher" target="_blank" rel="noopener noreferrer" style="margin-top:var(--space-sm)">Kaynak kodları</a>
-            <p class="hero__note">Ücretsiz, reklamsız, GPL-3.0.</p>
-          </div>
+        <div class="features__split">
+          <figure class="features__shot">
+            <img src="assets/screens/play.webp" width="2880" height="1800" alt="Cookie Launcher'ın Oyna ekranı: Simply Optimized profili, 35 mod ve Oyna düğmesi." loading="lazy" decoding="async">
+            <figcaption>Oyna — profiller, sürümler ve modlar aynı ekranda.</figcaption>
+            <div class="features__thumbs" aria-label="Uygulama ekranları">
+              <img src="assets/screens/mods.webp" width="2880" height="1800" alt="Modrinth mağazası: mod kartları ve kurulu modlar." loading="lazy" decoding="async">
+              <img src="assets/screens/shaders.webp" width="2880" height="1800" alt="Shader mağazası: Complementary Shaders, BSL ve Photon." loading="lazy" decoding="async">
+              <img src="assets/screens/play.webp" width="2880" height="1800" alt="Oyna ekranında seçili profil ve başlatma düğmesi." loading="lazy" decoding="async">
+              <img src="assets/screens/modpacks.webp" width="2880" height="1800" alt="Mod paketi mağazası: Fabulously Optimized ve Vanilla Perfected." loading="lazy" decoding="async">
+            </div>
+          </figure>
+
+          <ul class="features__list">
+            <li>
+              <h3>900+ sürüm</h3>
+              <p>Mojang'ın tüm resmi Java sürümleri.</p>
+            </li>
+            <li>
+              <h3>Modrinth</h3>
+              <p>Mod, shader ve paket; bağımlılıklarıyla.</p>
+            </li>
+            <li>
+              <h3>Shaderlar</h3>
+              <p>Aynı profile, tek tıkla.</p>
+            </li>
+            <li>
+              <h3>Profiller</h3>
+              <p>Her dünya kendi sürümüyle.</p>
+            </li>
+            <li>
+              <h3>Mod paketleri</h3>
+              <p>Kendi profili ve modlarıyla.</p>
+            </li>
+            <li>
+              <h3>Arkadaşlar</h3>
+              <p>Noise_XX ile uçtan uca şifreli davetler.</p>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section class="band">
-      <div class="container band__grid">
-        <p class="band__line">Electron paketi yok.</p>
-        <p class="band__note">Arayüz sistemin kendi webview’inde çalışır; indirme ve başlatma işleri hafif bir Python çekirdeğinde.</p>
-      </div>
-    </section>
-
-    <section id="features" class="section">
-      <div class="container">
-        <div class="head">
-          <h2>Ne getiriyor</h2>
-          <p class="lead">Dokuz parça, tek kurulum. Windows’ta gömülü çekirdek var; Linux ve macOS paketleri aynı çekirdeği taşır.</p>
+    <section class="search" id="modrinth" aria-labelledby="search-title">
+      <div class="shell search__inner">
+        <div class="search__lead">
+          <h2 class="search__title" id="search-title" data-reveal>Mağaza.</h2>
+          <p class="search__note" data-reveal>Modrinth'te ara: 900+ sürüm, modlar ve shaderlar; hepsi aynı pencerede.</p>
+          <form class="search__form" role="search" action="https://modrinth.com/mods" method="get">
+            <label class="search__label" for="mod-search">Modrinth'te ara</label>
+            <div class="search__bar">
+              <svg class="search__icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+              <input class="search__input" id="mod-search" type="search" name="q" value="sodium" placeholder="Mod, shader ya da paket ara…" autocomplete="off" spellcheck="false" aria-controls="results" aria-describedby="search-status">
+              <button class="search__submit" type="submit">Ara</button>
+            </div>
+          </form>
+          <p class="visually-hidden" id="search-status" role="status">aranıyor…</p>
+          <div class="examples" aria-label="Örnek aramalar" data-reveal>
+            <button type="button" class="example" data-query="sodium">sodium</button>
+            <button type="button" class="example" data-query="iris">iris</button>
+            <button type="button" class="example" data-query="fabric">fabric</button>
+          </div>
         </div>
-        <ul class="rows">
-          <li class="rows__item rows__item--on">
-            <h3>Hafif Tauri Mimarisi</h3>
-            <p>Electron/Chromium paketi yok; arayüz sistemin kendi webview’inde, indirme ve başlatma Python çekirdeğinde.</p>
-          </li>
-          <li class="rows__item">
-            <h3>Modrinth &amp; Mod Paketleri</h3>
-            <p>Mod, shader ve doku paketi ara, tek tıkla aktif profile kur. Modpack (.mrpack) ikonlu, yeni bir profil olarak açılır.</p>
-          </li>
-          <li class="rows__item">
-            <h3>İzole Oyun Profilleri</h3>
-            <p>Her profil kendi Minecraft sürümüne, yükleyicisine ve ayrı mod, shader, doku klasörüne sahiptir.</p>
-          </li>
-          <li class="rows__item">
-            <h3>Otomatik Java &amp; Aikar GC</h3>
-            <p>Java 8/17/21 Mojang’dan indirilir; Aikar G1GC bayrakları mikro takılmaları azaltır.</p>
-          </li>
-          <li class="rows__item">
-            <h3>Windows &amp; Linux Desteği</h3>
-            <p>Windows kurulumu gömülü çekirdekle gelir; Linux’ta AppImage, .deb ve .rpm hazır. Çerçevesiz pencere ve native sürükleme var.</p>
-          </li>
-          <li class="rows__item">
-            <h3>Sıfır Telemetri, Açık Kaynak</h3>
-            <p>Kullanıcı verisi toplanmaz, arkada analiz isteği gönderilmez. Kaynak kod GPL-3.0 lisanslı.</p>
-          </li>
-          <li class="rows__item">
-            <h3>Canlı İlerleme Akışı</h3>
-            <p>İndirme ve kurulum boyunca yüzde, indirilen MB ve durum mesajı görünür; arayüz kilitlenmez.</p>
-          </li>
-          <li class="rows__item">
-            <h3>İçerik Yönetim Merkezi</h3>
-            <p>Yüklü modlar gerçek adları ve ikonlarıyla listelenir, filtrelenir, tek tıkla silinir; “İndirilenleri gizle” kalabalığı önler.</p>
-          </li>
-          <li class="rows__item">
-            <h3>Esnek Shader &amp; Doku Desteği</h3>
-            <p>Shader ve dokuda tam sürüm eşleşmesi şart değil, en yakın sürüm onayınızla kurulur. Modlarda sıkı eşleşme korunur.</p>
-          </li>
-        </ul>
-      </div>
-    </section>
 
-    <section id="preview" class="section section--tight">
-      <div class="container split">
-        <div class="split__text">
-          <h2>Karmaşık menü yok.</h2>
-          <p class="lead">Karmaşık menüler yerine oyununuza odaklanan minimalist bir deneyim; üç sekme, tek pencere.</p>
-        </div>
-        <div class="split__side">
-          <table class="screens">
-            <caption>Penceredeki sekmeler</caption>
-            <thead>
-              <tr><th scope="col">Sekme</th><th scope="col">Ne yapar</th></tr>
-            </thead>
-            <tbody>
-              <tr><th scope="row">Oyna</th><td>Aktif profil, sürüm ve başlat düğmesi.</td></tr>
-              <tr><th scope="row">Modlar</th><td>Yüklü içerikler gerçek ikonlarıyla, kategoriye göre filtrelenir.</td></tr>
-              <tr><th scope="row">Profiller</th><td>Her profilin kendi sürümü, yükleyicisi ve ayrı mod klasörü.</td></tr>
-            </tbody>
-          </table>
+        <div class="results" id="results" data-reveal data-ui="modrinth" role="region" aria-label="Modrinth arama sonuçları" aria-busy="true">
+          <div class="results__head"><span>Modrinth</span><span id="results-count">aranıyor…</span></div>
+          <ul class="results__list" id="results-list">
+            <li class="result result--loading">Modrinth’ten sonuçlar geliyor…</li>
+          </ul>
+          <a class="results__all" id="results-all" href="https://modrinth.com/mods?q=sodium" target="_blank" rel="noopener">Modrinth’te tüm sonuçlar</a>
         </div>
       </div>
     </section>
 
-    <section id="downloads" class="section">
-      <div class="container">
-        <div class="head">
-          <h2>Cookie Launcher'ı edinin</h2>
-          <p class="lead">Platformunuzu seçin ve son kararlı sürümü doğrudan GitHub üzerinden indirin.</p>
-        </div>
-
-        <div class="tabs" role="tablist" aria-label="İndirme platformu">
-          <button type="button" onclick="selectPlatform('windows')" role="tab" id="tab-windows-btn" aria-controls="content-windows" aria-selected="true" tabindex="0" class="tab">Windows</button>
-          <button type="button" onclick="selectPlatform('linux')" role="tab" id="tab-linux-btn" aria-controls="content-linux" aria-selected="false" tabindex="-1" class="tab">Linux</button>
-          <button type="button" onclick="selectPlatform('macos')" role="tab" id="tab-macos-btn" aria-controls="content-macos" aria-selected="false" tabindex="-1" class="tab">macOS <span class="tab__note">yeni</span></button>
-        </div>
-
-        <div role="tabpanel" aria-labelledby="tab-windows-btn" id="content-windows" tabindex="0" class="panel">
-          <div class="cards cards--2">
-            <article class="card">
-              <div>
-                <h3>Windows Yükleyici (.exe)</h3>
-                <p>Başlat menüsüne ve masaüstüne kısayol oluşturur. Gömülü çekirdek sayesinde Python kurmaya gerek yoktur.</p>
-                <p class="card__meta"><span class="card__kind">Kurulumlu</span><span>Windows 10 / 11, 64-bit</span></p>
-              </div>
-              <div class="card__actions">
-                <a class="btn" href="https://github.com/cookie-launcher/cookie-launcher/releases/latest" target="_blank" rel="noopener noreferrer">Yükleyiciyi indir (.exe)</a>
-              </div>
-            </article>
-
-            <article class="card">
-              <div>
-                <h3>Kaynaktan Derle</h3>
-                <p>Depoyu klonlayıp <code>npm run tauri:build</code> ile kendi paketini üret. Katkılar memnuniyetle karşılanır.</p>
-                <p class="card__meta"><span class="card__kind">Geliştirici</span><span>Node, Rust, Python</span></p>
-              </div>
-              <div class="card__actions">
-                <a class="btn btn--quiet" href="https://github.com/cookie-launcher/cookie-launcher" target="_blank" rel="noopener noreferrer">GitHub deposunu aç</a>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <div role="tabpanel" aria-labelledby="tab-linux-btn" id="content-linux" tabindex="0" class="panel" hidden>
-          <div class="cards cards--3">
-            <article class="card">
-              <div>
-                <h3>Universal AppImage</h3>
-                <p>Ubuntu, Fedora, Debian ve diğer dağıtımlarda bağımlılık sorunu olmadan çalışır.</p>
-                <p class="card__meta"><span class="card__kind">Evrensel</span></p>
-              </div>
-              <div class="card__actions">
-                <a class="btn" href="https://github.com/cookie-launcher/cookie-launcher/releases/latest" target="_blank" rel="noopener noreferrer">İndir (.AppImage)</a>
-              </div>
-            </article>
-
-            <article class="card">
-              <div>
-                <h3>.deb Paketi</h3>
-                <p>Debian tabanlı dağıtımlarda çift tıkla kurulur; gömülü çekirdek içerir.</p>
-                <p class="card__meta"><span class="card__kind">Debian / Ubuntu</span></p>
-              </div>
-              <div class="card__actions">
-                <a class="btn btn--quiet" href="https://github.com/cookie-launcher/cookie-launcher/releases/latest" target="_blank" rel="noopener noreferrer">İndir (.deb)</a>
-              </div>
-            </article>
-
-            <article class="card">
-              <div>
-                <h3>.rpm Paketi</h3>
-                <p>Fedora, RHEL ve türevlerinde paket yöneticisiyle kurulur.</p>
-                <p class="card__meta"><span class="card__kind">Fedora / RHEL</span></p>
-              </div>
-              <div class="card__actions">
-                <a class="btn btn--quiet" href="https://github.com/cookie-launcher/cookie-launcher/releases/latest" target="_blank" rel="noopener noreferrer">İndir (.rpm)</a>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <div role="tabpanel" aria-labelledby="tab-macos-btn" id="content-macos" tabindex="0" class="panel" hidden>
-          <div class="cards cards--2">
-            <article class="card">
-              <div>
-                <h3>macOS DMG (arm64)</h3>
-                <p>Apple Silicon işlemcili Mac’ler için disk imajı. Gömülü Python çekirdeğiyle birlikte gelir.</p>
-                <p class="card__meta"><span class="card__kind">Apple Silicon</span><span>M1 / M2 / M3 / M4</span></p>
-              </div>
-              <div class="card__actions">
-                <button type="button" class="btn" onclick="openMacWarning('arm64')">İndir (.dmg, arm64)</button>
-              </div>
-            </article>
-
-            <article class="card">
-              <div>
-                <h3>macOS DMG (x64)</h3>
-                <p>Intel işlemcili Mac’ler için disk imajı. Gömülü Python çekirdeğiyle birlikte gelir.</p>
-                <p class="card__meta"><span class="card__kind">Intel</span><span>x86_64</span></p>
-              </div>
-              <div class="card__actions">
-                <button type="button" class="btn btn--quiet" onclick="openMacWarning('x64')">İndir (.dmg, x64)</button>
-              </div>
-            </article>
-          </div>
-
-          <div class="warn">
-            <h3>Deneysel: imzasız ve notarize edilmemiş</h3>
-            <p>macOS paketleri Apple Developer sertifikası olmadan derlenir; bu yüzden Gatekeeper “geliştirici doğrulanamıyor” uyarısı verir. Bu bir virüs işareti değil, imza eksikliğidir. İlk açılışta aşağıdakilerden birini yapmak zorunludur.</p>
-            <p><strong>Sağ tık, “Aç” yöntemi macOS 15 (Sequoia) ve sonrasında artık çalışmıyor.</strong> Aşağıdaki iki yoldan birini kullanın.</p>
-            <ol>
-              <li><strong>Hızlı yol (Terminal):</strong> DMG’yi açıp uygulamayı <code>/Applications</code> klasörüne taşıyın, sonra Terminal’de şunu çalıştırın:
-                <br><code>xattr -dr com.apple.quarantine /Applications/CookieLauncher.app</code>
-                <br><button type="button" class="btn btn--quiet btn--sm" onclick="copyToClipboard('xattr -dr com.apple.quarantine /Applications/CookieLauncher.app')">Komutu kopyala</button>
-              </li>
-              <li><strong>Arayüzden:</strong> uygulamayı açmayı deneyin, uyarı gelince <em>Sistem Ayarları, Gizlilik ve Güvenlik</em> bölümüne inin, güvenlik bildiriminde <strong>“Yine de Aç”</strong> ve çıkan pencerede tekrar <strong>Aç</strong>.</li>
-            </ol>
-            <p><strong>Neden imzalı değil?</strong> Apple Developer Program üyeliği 99 $/yıl ve bunu karşılayamıyorum. Uygulama tamamen açık kaynak (GPL-3.0); istemeyen <a href="https://github.com/cookie-launcher/cookie-launcher" target="_blank" rel="noopener noreferrer">kaynak koddan kendisi derleyebilir</a>.</p>
-            <p>Paketler GitHub Actions’ın macOS runner’larında üretilir. Geliştiricinin elinde Mac donanımı olmadığı için çalışma zamanı test edilmemiştir; sorun yaşarsan <a href="https://github.com/cookie-launcher/cookie-launcher/issues" target="_blank" rel="noopener noreferrer">Issues</a>'a bildir.</p>
-          </div>
-        </div>
+    <section class="stats" id="rakamlar" aria-labelledby="stats-title">
+      <div class="shell">
+      <h2 class="stats__title" id="stats-title" data-reveal>Rakamlarla.</h2>
+      <div class="stats__grid">
+        <article class="stat stat--big" data-reveal>
+          <p class="stat__figure">900+</p>
+          <p class="stat__caption">resmi Java sürümü; her biri tek tıkla kurulur.</p>
+        </article>
+        <article class="stat stat--five" data-reveal>
+          <p class="stat__figure">5</p>
+          <p class="stat__caption">Vanilla, Fabric, Forge, NeoForge, Quilt.</p>
+        </article>
+        <article class="stat stat--zero" data-reveal>
+          <p class="stat__figure">0</p>
+          <p class="stat__caption">Reklam, telemetri ve hesap yok.</p>
+        </article>
+      </div>
       </div>
     </section>
 
-    <section id="faq" class="section section--tight">
-      <div class="container">
-        <div class="head">
-          <h2>Sıkça sorulan sorular</h2>
-        </div>
-        <div class="faq">
-          <div class="faq__item">
-            <button type="button" class="faq__q" onclick="toggleFaq(this)">
-              <span>Hesap sistemi nasıl çalışıyor?</span>
-              <span class="icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq__a">
-              <p>Şu an çevrimdışı (offline) kullanıcı adı desteği vardır; oyun seçtiğiniz profille başlatılır. Microsoft/Xbox hesap girişi yol haritasındadır. Hiçbir giriş bilgisi toplanmaz, çünkü toplanacak veri yoktur.</p>
-            </div>
-          </div>
-          <div class="faq__item">
-            <button type="button" class="faq__q" onclick="toggleFaq(this)">
-              <span>macOS DMG paketleri nereden indirilir?</span>
-              <span class="icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq__a">
-              <p>İndirme Merkezi’ndeki macOS sekmesinden Apple Silicon (arm64) ve Intel (x64) DMG paketlerine ulaşabilirsiniz. Paketler imzasız ve notarize edilmemiş olduğu için ilk açılışta Gatekeeper uyarısı verir; <strong>sağ tık, “Aç” macOS 15+ üzerinde artık çalışmaz.</strong> Ya <code>xattr -dr com.apple.quarantine /Applications/CookieLauncher.app</code> komutunu çalıştırın ya da <em>Sistem Ayarları, Gizlilik ve Güvenlik, “Yine de Aç”</em> yolunu kullanın. İmzasızlığın nedeni Apple Developer üyeliğinin (99 $/yıl) karşılanamamasıdır; uygulama GPL-3.0 açık kaynak olduğu için dileyen kaynaktan derleyebilir.</p>
-            </div>
-          </div>
-          <div class="faq__item">
-            <button type="button" class="faq__q" onclick="toggleFaq(this)">
-              <span>Hangi mod yükleyicilerini destekliyor?</span>
-              <span class="icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq__a">
-              <p>Vanilla, Fabric ve Forge profilleri oluşturabilirsiniz. Modrinth modpack’leri (.mrpack) ise kendi Fabric/Forge/NeoForge/Quilt sürümleriyle otomatik olarak yeni bir profil halinde kurulur. Mod kaynağı Modrinth’tir; CurseForge entegrasyonu yoktur.</p>
-            </div>
-          </div>
-          <div class="faq__item">
-            <button type="button" class="faq__q" onclick="toggleFaq(this)">
-              <span>Windows’ta Python kurmam gerekiyor mu?</span>
-              <span class="icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq__a">
-              <p>Hayır. Setup paketi, PyInstaller ile derlenmiş gömülü çekirdeği (cookielauncher-core.exe) içerir. Linux paketlerinde de aynı gömülü çekirdek bulunur; ek bir kurulum gerekmez.</p>
-            </div>
-          </div>
-          <div class="faq__item">
-            <button type="button" class="faq__q" onclick="toggleFaq(this)">
-              <span>Shader’ım farklı bir sürüm için; yine de kurulur mu?</span>
-              <span class="icon" aria-hidden="true">+</span>
-            </button>
-            <div class="faq__a">
-              <p>Evet. Shader ve doku paketlerinde tam sürüm eşleşmesi aranmaz; en yakın sürüm size önerilir ve onayınızla kurulur. Modlarda ise oyunun çökmemesi için sürüm ve yükleyici eşleşmesi zorunludur.</p>
-            </div>
-          </div>
-        </div>
+    <section class="faq" id="sss" aria-labelledby="faq-title">
+      <div class="shell">
+      <div class="faq__head">
+        <h2 class="faq__title" id="faq-title" data-reveal>Sorular.</h2>
+        <p class="faq__lede" data-reveal>Kurulum, macOS, telemetri, sürümler ve arkadaşlar.</p>
+      </div>
+      <div class="faq__stack">
+        <details class="qa" open data-reveal>
+          <summary>
+            <span class="qa__tab">Windows</span>
+            <h3>Python kurmam gerekiyor mu?</h3>
+          </summary>
+          <div class="qa__answer"><p>Hayır. Windows kurulumu çekirdeği içinde getirir; Python kurmadan Oyna’ya basabilirsin. Java’yı da başlatıcı kendisi indirir.</p></div>
+        </details>
+        <details class="qa" data-reveal>
+          <summary>
+            <span class="qa__tab">macOS</span>
+            <h3>Neden imza uyarısı var?</h3>
+          </summary>
+          <div class="qa__answer"><p>DMG imzasız ve deneysel. macOS ilk açılışta Sistem Ayarları &gt; Gizlilik ve Güvenlik üzerinden izin isteyebilir.</p></div>
+        </details>
+        <details class="qa" data-reveal>
+          <summary>
+            <span class="qa__tab">Telemetri</span>
+            <h3>Veri topluyor mu?</h3>
+          </summary>
+          <div class="qa__answer"><p>Reklam ve telemetri yok. Mojang girişi dışında bir hesap istemez.</p></div>
+        </details>
+        <details class="qa" data-reveal>
+          <summary>
+            <span class="qa__tab">Sürümler</span>
+            <h3>Hangi sürümler var?</h3>
+          </summary>
+          <div class="qa__answer"><p>900’den fazla resmi Java sürümü ve beş çalıştırma yolu: Vanilla, Fabric, Forge, NeoForge, Quilt.</p></div>
+        </details>
+        <details class="qa" data-reveal>
+          <summary>
+            <span class="qa__tab">Arkadaşlar</span>
+            <h3>Arkadaşımla nasıl oynarım?</h3>
+          </summary>
+          <div class="qa__answer"><p>Dünyayı paylaş, CL1 kodunu gönder. Önce doğrudan P2P denenir; gerekirse Noise_XX ile şifreli relay kullanılır.</p></div>
+        </details>
+      </div>
+      </div>
+    </section>
+
+    <section class="cta" id="indir" aria-labelledby="cta-title">
+      <div class="shell cta__inner">
+      <h2 class="cta__title" id="cta-title" data-reveal>Dünya<br>aç.</h2>
+      <div class="cta__bottom">
+        <p class="cta__support" data-reveal>Cookie Launcher 4.0.0, <a href="https://github.com/cookie-launcher/cookie-launcher/releases/download/v4.0.0/CookieLauncher_4.0.0_x64-setup.exe">Windows</a>, <a href="https://github.com/cookie-launcher/cookie-launcher/releases/download/v4.0.0/CookieLauncher_4.0.0_amd64.AppImage">Linux</a> ve <a href="https://github.com/cookie-launcher/cookie-launcher/releases">macOS</a> için ücretsiz.</p>
+        <a class="button button--cta" data-reveal href="https://github.com/cookie-launcher/cookie-launcher/releases/latest" data-download>İndir</a>
+      </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container">
-      <div class="footer__mast">
-        <a class="wordmark" href="index.html" aria-label="Cookie Launcher, ana sayfa">
-          <img src="assets/favicon.svg" width="48" height="48" alt="">
-          <span>Cookie Launcher</span>
-        </a>
-        <p class="footer__close">Açık kaynak, GPL-3.0. Reklam ve telemetri yok.</p>
+    <div class="shell">
+    <div class="footer__top">
+      <div class="footer__mark">
+        <img src="assets/cookie-logo.png" width="256" height="256" alt="" loading="lazy" decoding="async">
       </div>
+      <p class="footer__wordmark" lang="en">Cookie Launcher</p>
+    </div>
 
+    <div class="footer__body">
       <nav class="footer__links" aria-label="Proje bağlantıları">
-        <a href="https://github.com/cookie-launcher/cookie-launcher" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="https://github.com/cookie-launcher/cookie-launcher/issues" target="_blank" rel="noopener noreferrer">Sorun Bildir (Issues)</a>
-        <a href="https://github.com/cookie-launcher/cookie-launcher/releases" target="_blank" rel="noopener noreferrer">Sürümler</a>
-        <a href="https://github.com/cookie-launcher/cookie-launcher/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Lisans</a>
+        <a href="https://github.com/cookie-launcher/cookie-launcher">GitHub</a>
+        <a href="https://github.com/cookie-launcher/cookie-launcher/releases">Sürümler</a>
+        <a href="https://github.com/cookie-launcher/cookie-launcher/issues">Sorunlar</a>
+        <a href="https://github.com/cookie-launcher/cookie-launcher/blob/main/LICENSE">GPL-3.0</a>
       </nav>
+      <p class="footer__contact">Cookie Launcher katkıcıları, Kasım 2026.<br>900+ sürüm. Tek başlatıcı.</p>
+      <a class="button button--ghost" href="#top">Başa dön</a>
+    </div>
 
-      <div class="footer__legal">
-        <nav class="footer__rules" aria-label="Yasal bilgiler">
-          <a href="gizlilik.html">Gizlilik Politikası</a>
-          <a href="cerez-politikasi.html">Çerez Politikası</a>
-          <a href="kullanim-kosullari.html">Kullanım Koşulları</a>
-          <a href="iade-politikasi.html">İade Politikası</a>
-          <a href="iletisim.html">İletişim</a>
-          <button type="button" data-consent-manage>Çerez tercihlerini değiştir</button>
-        </nav>
-
-        <p><strong>Minecraft</strong>, Mojang Synergies AB’nin ticari markasıdır. <strong>Fabric, Forge, NeoForge, Quilt ve Modrinth</strong> ilgili sahiplerinin markalarıdır. Cookie Launcher bağımsız bir açık kaynak projesidir; Mojang, Microsoft, Xbox Game Studios veya anılan proje sahipleriyle bağlantılı, sponsorlu ya da onaylı değildir. Bu site hiçbir oyun dosyası, hesap bilgisi veya oyun kodu dağıtmaz ve satmaz.</p>
-        <p>Sorumluluk reddi: Yazılım <a href="https://github.com/cookie-launcher/cookie-launcher/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">GPL-3.0</a> lisansıyla <strong>“AS IS”</strong> esasıyla sunulur; açık bir garantisi yoktur. Bu sayfadaki politika metinleri genel bilgilendirme amaçlıdır, <strong>hukuki danışmanlık değildir</strong>; ticari veya hukuki bir işlem öncesinde bir avukata danışın.</p>
-      </div>
+    <div class="footer__legal">
+      <p>Minecraft, Mojang Synergies AB’nin ticari markasıdır. Bu proje Mojang veya Microsoft ile bağlantılı değildir. Ekranlar Cookie Launcher 4.0.0’dan; yazı tipleri Panchang ve Switzer, Fontshare.</p>
+      <p>© 2026 Cookie Launcher</p>
+    </div>
     </div>
   </footer>
 
-  <div id="toast-box" role="status" aria-live="polite" aria-atomic="true"></div>
-
-  <div class="modal" id="macWarnModal" role="dialog" aria-modal="true" aria-labelledby="macWarnTitle" hidden>
-    <div class="modal__box" tabindex="-1">
-      <h2 id="macWarnTitle">macOS’ta ilk açılış: önce bunu okuyun</h2>
-      <p>macOS paketleri <strong>imzasız ve notarize edilmemiş</strong>. Sebebi: Apple Developer Program üyeliği <strong>99 $/yıl</strong> ve bunu karşılayamıyorum. Uygulama tamamen açık kaynak (GPL-3.0); istemezseniz kaynak koddan kendiniz derleyebilirsiniz. Bu yüzden macOS ilk açılışta <strong>“geliştirici doğrulanamıyor”</strong> uyarısını gösterir; bu bir virüs işareti değil, yalnızca imza eksikliğidir.</p>
-      <ol>
-        <li><strong>Sağ tık, “Aç” macOS 15 (Sequoia) ve sonrasında artık çalışmıyor.</strong></li>
-        <li><strong>Terminal (önerilen):</strong> uygulamayı <code>/Applications</code> klasörüne taşıyın, sonra çalıştırın:
-          <br><code>xattr -dr com.apple.quarantine /Applications/CookieLauncher.app</code>
-          <br><button type="button" class="btn btn--quiet btn--sm" onclick="copyToClipboard('xattr -dr com.apple.quarantine /Applications/CookieLauncher.app')">Komutu kopyala</button>
-        </li>
-        <li><strong>Arayüzden:</strong> açmayı deneyin, <em>Sistem Ayarları, Gizlilik ve Güvenlik</em>, <strong>“Yine de Aç”</strong>, <strong>Aç</strong>.</li>
-      </ol>
-      <p>Devam ettiğinizde GitHub Releases sayfası yeni sekmede açılır.</p>
-      <div class="modal__actions">
-        <button type="button" class="btn btn--quiet btn--sm" onclick="closeMacWarning()">Vazgeç</button>
-        <a id="macWarnContinue" class="btn btn--sm" href="https://github.com/cookie-launcher/cookie-launcher/releases/latest" target="_blank" rel="noopener noreferrer">Anladım, indir (.dmg)</a>
-      </div>
-    </div>
-  </div>
-
-  <script src="assets/consent.js" defer></script>
-
-  <script>
-    function copyToClipboard(text, successMsg = 'Panoya kopyalandı!') {
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(text).then(() => showToast(successMsg)).catch(() => fallbackCopy(text, successMsg));
-      } else {
-        fallbackCopy(text, successMsg);
-      }
-    }
-
-    function fallbackCopy(text, successMsg) {
-      var el = document.createElement('textarea');
-      el.value = text;
-      el.style.position = 'fixed';
-      el.style.left = '-9999px';
-      document.body.appendChild(el);
-      el.select();
-      try {
-        document.execCommand('copy');
-        showToast(successMsg);
-      } catch (err) {
-        console.error('Kopyalama hatası:', err);
-      }
-      document.body.removeChild(el);
-    }
-
-    function showToast(message) {
-      var box = document.getElementById('toast-box');
-      var toast = document.createElement('div');
-      toast.className = 'toast';
-      toast.textContent = message;
-      box.appendChild(toast);
-      setTimeout(function () { toast.remove(); }, 3000);
-    }
-
-    var PLATFORMS = ['windows', 'linux', 'macos'];
-
-    function selectPlatform(os, moveFocus) {
-      PLATFORMS.forEach(function (p) {
-        var content = document.getElementById('content-' + p);
-        var btn = document.getElementById('tab-' + p + '-btn');
-        var active = (p === os);
-        if (content) content.hidden = !active;
-        if (btn) {
-          btn.setAttribute('aria-selected', active ? 'true' : 'false');
-          btn.setAttribute('tabindex', active ? '0' : '-1');
-        }
-        if (active && moveFocus && btn) btn.focus();
-      });
-      var labels = {
-        windows: 'Windows için indir (.exe)',
-        linux: 'Linux için indir (.AppImage)',
-        macos: 'macOS için indir (.dmg)'
-      };
-      var heroLabel = document.getElementById('hero-cta-label');
-      if (heroLabel) heroLabel.textContent = labels[os] || labels.windows;
-      document.querySelectorAll('.menu__row').forEach(function (row) {
-        row.setAttribute('aria-current', row.dataset.os === os ? 'true' : 'false');
-      });
-    }
-
-    document.addEventListener('keydown', function (e) {
-      var onTab = e.target && e.target.closest && e.target.closest('[role="tab"]');
-      if (!onTab) return;
-      var i = PLATFORMS.indexOf(onTab.id.replace('tab-', '').replace('-btn', ''));
-      if (i === -1) return;
-      var next = null;
-      if (e.key === 'ArrowRight') next = PLATFORMS[(i + 1) % PLATFORMS.length];
-      else if (e.key === 'ArrowLeft') next = PLATFORMS[(i - 1 + PLATFORMS.length) % PLATFORMS.length];
-      else if (e.key === 'Home') next = PLATFORMS[0];
-      else if (e.key === 'End') next = PLATFORMS[PLATFORMS.length - 1];
-      if (!next) return;
-      e.preventDefault();
-      selectPlatform(next, true);
-    });
-
-    function initFaq() {
-      document.querySelectorAll('button[onclick="toggleFaq(this)"]').forEach(function (btn, i) {
-        var answer = btn.nextElementSibling;
-        if (!answer) return;
-        btn.id = btn.id || 'faq-q-' + (i + 1);
-        answer.id = 'faq-a-' + (i + 1);
-        btn.setAttribute('aria-expanded', 'false');
-        btn.setAttribute('aria-controls', answer.id);
-        answer.hidden = true;
-        var icon = btn.querySelector('.icon');
-        if (icon) icon.setAttribute('aria-hidden', 'true');
-      });
-    }
-
-    function toggleFaq(button) {
-      var content = button.nextElementSibling;
-      var icon = button.querySelector('.icon');
-      var isHidden = content.hidden;
-      content.hidden = !isHidden;
-      if (icon) icon.textContent = isHidden ? '−' : '+';
-      button.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
-    }
-
-    window.addEventListener('DOMContentLoaded', function () {
-      initFaq();
-      var ua = (navigator.userAgent || '').toLowerCase();
-      if (ua.indexOf('linux') !== -1) selectPlatform('linux');
-      else if (ua.indexOf('mac') !== -1) selectPlatform('macos');
-      else selectPlatform('windows');
-
-      document.querySelectorAll('.menu__row').forEach(function (row) {
-        row.addEventListener('click', function () { selectPlatform(row.dataset.os); });
-      });
-    });
-
-    function openMacWarning(arch) {
-      var m = document.getElementById('macWarnModal');
-      if (!m) return;
-      var btn = document.getElementById('macWarnContinue');
-      if (btn) btn.textContent = arch === 'x64' ? 'Anladım, indir (.dmg, x64)' : 'Anladım, indir (.dmg, arm64)';
-      m.hidden = false;
-      var box = m.querySelector('.modal__box');
-      if (box) box.focus();
-    }
-
-    function closeMacWarning() {
-      var m = document.getElementById('macWarnModal');
-      if (m) m.hidden = true;
-    }
-
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMacWarning(); });
-  </script>
+  <script src="app.js?v=10"></script>
 </body>
 </html>
