@@ -66,31 +66,31 @@
   var banner = null;
 
   function buildBanner() {
-    var wrap = el('div', 'fixed inset-x-0 bottom-0 z-[60] p-3 sm:p-4');
+    var wrap = el('div', 'consent');
     wrap.setAttribute('role', 'region');
     wrap.setAttribute('aria-label', 'Cerez tercihleri');
 
-    var box = el('div', 'max-w-4xl mx-auto rounded-2xl border border-surface-border bg-surface-card/95 backdrop-blur-md shadow-2xl p-4 sm:p-5');
+    var box = el('div', 'consent__box');
     box.setAttribute('role', 'dialog');
     box.setAttribute('aria-modal', 'false');
     box.setAttribute('aria-labelledby', 'consent-banner-title');
     box.setAttribute('aria-describedby', 'consent-banner-desc');
 
-    var h = el('h2', 'text-sm sm:text-base font-bold text-white', 'Cerez ve benzeri teknolojiler');
+    var h = el('h2', 'consent__title', 'Cerez ve benzeri teknolojiler');
     h.id = 'consent-banner-title';
 
-    var p = el('p', 'text-xs sm:text-sm text-slate-400 leading-relaxed mt-2');
+    var p = el('p', 'consent__desc');
     p.id = 'consent-banner-desc';
-    p.innerHTML = 'Bu site <strong class="text-slate-200">çerez kullanmaz</strong> ve hiçbir analitik, ' +
+    p.innerHTML = 'Bu site <strong>çerez kullanmaz</strong> ve hiçbir analitik, ' +
       'piksel veya reklam kodu yüklemez. Yalnızca bu tercihinizi hatırlamak için tarayıcınızın ' +
-      '<code class="font-mono text-cookie-300">localStorage</code> alanına küçük bir kayıt yazılır; ' +
+      '<code>localStorage</code> alanına küçük bir kayıt yazılır; ' +
       'bu kayıt sunucuya gönderilmez.';
 
-    var row = el('div', 'mt-4 flex flex-col sm:flex-row gap-2 sm:justify-end');
-    var bManage = el('button', 'px-4 py-2 rounded-xl text-sm font-semibold border border-surface-border bg-surface-base text-slate-200 hover:border-cookie-500/50 hover:text-white transition-colors', 'Tercihlerimi yönet');
+    var row = el('div', 'consent__actions');
+    var bManage = el('button', 'btn btn--quiet btn--sm', 'Tercihlerimi yönet');
     bManage.type = 'button';
     bManage.addEventListener('click', function () { openPanel(); });
-    var bOk = el('button', 'px-4 py-2 rounded-xl text-sm font-bold bg-cookie-500 hover:bg-cookie-400 text-slate-950 transition-colors', 'Anladım');
+    var bOk = el('button', 'btn btn--sm', 'Anladım');
     bOk.type = 'button';
     bOk.addEventListener('click', function () { write({ analytics: false, marketing: false }); hideBanner(); });
     row.appendChild(bManage);
@@ -104,58 +104,58 @@
   }
 
   function buildPanel() {
-    var wrap = el('div', 'fixed inset-0 z-[70] hidden items-center justify-center p-4 bg-black/70');
-    var box = el('div', 'w-full max-w-xl rounded-2xl border border-surface-border bg-surface-card shadow-2xl p-5 sm:p-6 max-h-[85vh] overflow-y-auto');
+    var wrap = el('div', 'consent__panel');
+    var box = el('div', 'consent__dialog');
     box.setAttribute('role', 'dialog');
     box.setAttribute('aria-modal', 'true');
     box.setAttribute('aria-labelledby', 'consent-panel-title');
 
-    var h = el('h2', 'text-lg sm:text-xl font-extrabold text-white', 'Çerez tercihlerinizi yönetin');
+    var h = el('h2', 'consent__title', 'Çerez tercihlerinizi yönetin');
     h.id = 'consent-panel-title';
 
-    var intro = el('p', 'text-xs sm:text-sm text-slate-400 leading-relaxed mt-2',
+    var intro = el('p', 'consent__intro',
       'Bu sitede şu anda hiçbir çerez veya benzeri teknoloji çalışmıyor. Aşağıdaki ayarlar, ileride ' +
       'eklenebilecek isteğe bağlı araçlar için saklanır. "Zorunlu" kategorisi kapatılamaz; ancak bu ' +
       'sitede zorunlu çerez de bulunmuyor.');
 
-    var list = el('div', 'mt-5 space-y-3');
+    var list = el('div', 'consent__list');
     var inputs = {};
     CATEGORIES.forEach(function (c) {
-      var row = el('div', 'rounded-xl border border-surface-border bg-surface-base p-4');
-      var head = el('div', 'flex items-center justify-between gap-3');
-      var left = el('div', 'flex items-center gap-2.5');
+      var row = el('div', 'consent__row');
+      var head = el('div', 'consent__head');
+      var left = el('div', 'consent__label');
       var cb = document.createElement('input');
       cb.type = 'checkbox';
       cb.id = 'consent-' + c.id;
-      cb.className = 'w-5 h-5 rounded border-surface-border bg-surface-card text-cookie-500 focus:ring-2 focus:ring-cookie-400 cursor-pointer';
+      cb.className = 'consent__cb';
       if (c.locked) { cb.checked = true; cb.disabled = true; }
-      var lab = el('label', 'text-sm font-bold text-white', c.label);
+      var lab = el('label', '', c.label);
       lab.setAttribute('for', cb.id);
-      if (c.locked) { lab.appendChild(el('span', 'ml-2 text-[10px] font-mono uppercase text-cookie-300 border border-cookie-500/30 rounded px-1.5 py-0.5', 'hep açık')); }
+      if (c.locked) { lab.appendChild(el('span', 'tag', 'hep açık')); }
       left.appendChild(cb);
       left.appendChild(lab);
       head.appendChild(left);
-      var desc = el('p', 'text-xs text-slate-400 leading-relaxed mt-2', c.desc);
+      var desc = el('p', 'consent__desc--row', c.desc);
       row.appendChild(head);
       row.appendChild(desc);
       list.appendChild(row);
       inputs[c.id] = cb;
     });
 
-    var note = el('p', 'text-[11px] text-slate-400 leading-relaxed mt-4',
-      'Kaydınız yalnızca bu tarayıcıda saklanır ve sunucuya gönderilmez. Tarayıcı verilerinizi silerek ' +
-      'kaydı istediğiniz anda kaldırabilirsiniz. Ayrıntılar: <a href="cerez-politikasi.html" class="text-cookie-400 underline underline-offset-2">Çerez Politikası</a>.');
+    var note = el('p', 'consent__note');
+    note.innerHTML = 'Kaydınız yalnızca bu tarayıcıda saklanır ve sunucuya gönderilmez. Tarayıcı verilerinizi silerek ' +
+      'kaydı istediğiniz anda kaldırabilirsiniz. Ayrıntılar: <a href="cerez-politikasi.html">Çerez Politikası</a>.';
 
-    var row = el('div', 'mt-5 flex flex-col sm:flex-row gap-2 sm:justify-between');
-    var leftBtns = el('div', 'flex flex-col sm:flex-row gap-2');
-    var bReject = el('button', 'px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold border border-surface-border bg-surface-base text-slate-300 hover:text-white transition-colors', 'Tümünü kapat');
+    var row = el('div', 'consent__foot');
+    var leftBtns = el('div', 'consent__actions');
+    var bReject = el('button', 'btn btn--quiet btn--sm', 'Tümünü kapat');
     bReject.type = 'button';
     bReject.addEventListener('click', function () {
       write({ analytics: false, marketing: false });
       closePanel();
       hideBanner();
     });
-    var bAccept = el('button', 'px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold border border-surface-border bg-surface-base text-slate-300 hover:text-white transition-colors', 'Tümünü aç');
+    var bAccept = el('button', 'btn btn--quiet btn--sm', 'Tümünü aç');
     bAccept.type = 'button';
     bAccept.addEventListener('click', function () {
       write({ analytics: true, marketing: true });
@@ -165,7 +165,7 @@
     leftBtns.appendChild(bReject);
     leftBtns.appendChild(bAccept);
 
-    var bSave = el('button', 'px-5 py-2 rounded-xl text-sm font-bold bg-cookie-500 hover:bg-cookie-400 text-slate-950 transition-colors', 'Tercihlerimi kaydet');
+    var bSave = el('button', 'btn btn--sm', 'Tercihlerimi kaydet');
     bSave.type = 'button';
     bSave.addEventListener('click', function () {
       write({
@@ -188,7 +188,7 @@
 
     wrap.addEventListener('click', function (e) { if (e.target === wrap) closePanel(); });
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && !wrap.classList.contains('hidden')) closePanel();
+      if (e.key === 'Escape' && wrap.classList.contains('is-open')) closePanel();
     });
 
     return wrap;
@@ -210,21 +210,21 @@
   function openPanel() {
     if (!panel) return;
     syncPanel();
-    panel.classList.remove('hidden');
-    panel.classList.add('flex');
+    panel.classList.add('is-open');
     var first = document.getElementById('consent-analytics');
     if (first) first.focus();
   }
 
   function closePanel() {
     if (!panel) return;
-    panel.classList.add('hidden');
-    panel.classList.remove('flex');
+    panel.classList.remove('is-open');
   }
 
   function hideBanner() {
     if (banner && banner.parentNode) banner.parentNode.removeChild(banner);
     banner = null;
+    document.body.classList.remove('consent-open');
+    document.documentElement.style.setProperty('--consent-h', '0px');
   }
 
   function showBanner() {
@@ -232,6 +232,12 @@
     if (banner || !document.body) return;
     banner = buildBanner();
     document.body.appendChild(banner);
+    document.body.classList.add('consent-open');
+    var reserve = function () {
+      document.documentElement.style.setProperty('--consent-h', banner ? banner.offsetHeight + 'px' : '0px');
+    };
+    reserve();
+    window.addEventListener('resize', reserve, { passive: true });
   }
 
   // Genel API: baska kodlar tercihi okuyabilir.
